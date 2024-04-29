@@ -110,6 +110,7 @@ class DateInputField(forms.MultiValueField):
                 else:
                     return self.compress((None, None, None))
         else:
+            print("HITTING INCORRECT ERROR!")
             raise ValidationError(self.error_messages["invalid"], code="invalid")
         for i, field in enumerate(self.fields):
             field.widget.errors = []
