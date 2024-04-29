@@ -39,6 +39,7 @@ class DateInputField(forms.MultiValueField):
     """
 
     widget = DateInputWidget
+    field_name_mapping = {}
 
     def __init__(self, **kwargs):
         # Define one message for all fields.
@@ -52,6 +53,7 @@ class DateInputField(forms.MultiValueField):
                 label=_("Day"),
                 error_messages={"incomplete": "Enter the day of the month"},
                 validators=[RegexValidator(r"^[0-9]+$", "Enter a valid date")],
+                name="example"
             ),
             forms.CharField(
                 label=_("Month"),
@@ -94,6 +96,7 @@ class DateInputField(forms.MultiValueField):
              the value converted to a ``date``.
 
         """
+        breakpoint()
         clean_data = []
         errors = []
         if self.disabled and not isinstance(value, list):
